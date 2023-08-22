@@ -1,4 +1,5 @@
 import axios from 'axios';
+import cors from 'cors';
 import { config } from 'dotenv';
 import express from 'express';
 import 'express-async-errors';
@@ -23,6 +24,7 @@ const PORT = process.env.PORT || 8080;
 app.enable('trust proxy');
 
 // Attaching middlewares
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 app.use(requestedAtMiddleware());
 app.use(loggerMiddleware());
