@@ -29,7 +29,7 @@ async function getRepository(
   response: Response,
 ) {
   const { owner, repositoryName } = request.params;
-  const url = `/repos/${owner}/${repositoryName}/issues`;
+  const url = `/repos/${owner}/${repositoryName}`;
 
   const { data } = await axios.get(url);
   response.json(data);
