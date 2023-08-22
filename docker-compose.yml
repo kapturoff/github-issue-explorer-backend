@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  node-app:
+    build: .
+    image: node-app
+    environment:
+      - PORT=8080
+      - MONGO_URL=mongodb://mongodb:27017/app
+    ports:
+      - '8080:8080'
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - db_data:/data/db
+
+volumes:
+  db_data:
